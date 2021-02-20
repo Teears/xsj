@@ -1,0 +1,29 @@
+<!--pages/address/address.wxml-->
+<view class="container">
+  <view class="address-box">
+    <view class="address-item" wx:for="{{address}}" wx:key="item">
+      <view class="head">
+        <text>{{item.title}}</text>
+        <text>{{item.phone}}</text>
+      </view>
+      <view class="address-con">{{item.address}}</view>
+      <view class="address-bottom">
+        <view class="bottom-left">
+          <checkbox-group>
+            <label class="checkbox">
+              <checkbox value="设置默认" checked="{{item.isdefault ==1?true:false}}" disabled>默认设置</checkbox>
+            </label>
+          </checkbox-group>
+        </view>
+        <view class="bottom-right">
+          <text data-dataall="{{item}}" bindtap="updateAddress">编辑</text> - 
+          <text data-id="{{item.id}}" bindtap="deleteAddress">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="footBox">
+    <view class="addAddress" bindtap="toAddAddress">添加新地址</view>
+    <view class="tomine" bindtap="toMine">个人中心</view>
+  </view>
+</view>

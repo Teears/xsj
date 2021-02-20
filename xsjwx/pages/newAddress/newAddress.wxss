@@ -1,0 +1,113 @@
+/* pages/newAddress/newAddress.wxss */
+view{
+  margin: 0;
+  padding: 0;
+}
+.container{
+  min-height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.input-box{
+  width: 100%;
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #eceaea;
+  border-bottom: 1rpx solid #eceaea;
+}
+.input-box text{
+  box-sizing: border-box;
+  width: 180rpx;
+  height: 44px;
+  line-height: 44px;
+  text-align: left;
+  display: inline-block;
+  font-size: 36rpx;
+  padding: 0rpx 20rpx;
+}
+.weui-cells{
+  position: relative;
+  margin-top: 1.17647059em;
+  background-color: #fff;
+  line-height: 1.41176471;
+  font-size: 17px;
+  width: 500rpx;
+}
+.weui-cells_after-title{
+  margin-top: 0rpx;
+  border-bottom: 1rpx solid #eceaea;
+}
+.weui-cell{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.weui-cell_input{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.weui-input{
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+  line-height: 44px;
+  cursor: auto;
+  display: block;
+  text-overflow: clip;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 36rpx;
+}
+/*多行输入的样式*/
+.section{
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20rpx;
+  border-bottom: 1rpx solid #eceaea;
+  border-top: 1rpx solid #eceaea;
+}
+textarea{
+  padding: 10rpx 20rpx;
+  height: 150rpx;
+}
+/*开关*/
+.position{
+  position: relative;
+  border-bottom: 1rpx solid #eceaea;
+}
+.section__title{
+  height: 44px;
+  line-height: 44px;
+  padding-left: 20rpx;
+}
+.body-view{
+  position: absolute;
+  top: 15rpx;
+  right: 20rpx;
+}
+.btn-area{
+  margin-top: 20rpx;
+}
+/*地址选择样式*/
+.placeholder{
+  height: 44px;
+  width: 100%;
+  line-height: 44px;
+}
+.placeholder .picker{
+  width: 180rpx;
+  display: block;
+  float: left;
+  padding: 0 20rpx;
+  font-size: 36rpx;
+  box-sizing: border-box;
+}
+.placeholder .input{
+  width: 500rpx;
+  display: inline-block;
+  height: 44px;
+  line-height: 44px;
+}

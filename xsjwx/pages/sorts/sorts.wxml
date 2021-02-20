@@ -1,0 +1,37 @@
+<!--pages/sorts/sorts.wxml-->
+<view class="container">
+  <!--搜索框-->
+   <view class="search-view">
+    <view class="search-content">
+      <image src="/images/index/Search.png" class="search-icon"></image>
+      <input class="search-input" bindtap="toSearch" placeholder="请输入你想要的商品"></input>
+    </view>
+  </view>
+  <!--主体内容-->
+  <view class="sorts-box">
+    <!--左边导航-->
+    <view class="sorts-left">
+      <view class="sorts-list {{curIndex===index?'on':''}}" wx:for="{{sortsList}}" wx:key="index" bindtap="switchTab" data-id="{{item.id}}" data-index="{{index}}">
+        {{item.name}}
+      </view>
+    </view>
+    <!--右边显示区域-->
+    <scroll-view class="sorts-right" scroll-y="{{isScroll}}" scroll-into-view="{{toView}}" scroll-with-animation="{{true}}">
+      <block wx:for="{{sortsList}}" wx:for-item="item" wx:key="item">
+        <view class="sorts-info" id="{{item.id}}">
+          <view class="sorts-title">
+            <text>---{{item.name}}---</text>
+          </view>
+          <view class="product">
+            <view class="product-list" wx:for="{{item.productlist}}" wx:for-item="shopItem" wx:key="shopItem">
+              <view bindtap="toShopDetails" data-shopId="{{shopItem.id}}">
+                <image src="/images/index/{{shopItem.imgs}}"></image>
+                <view class="classname"><text>{{shopItem.name}}</text></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

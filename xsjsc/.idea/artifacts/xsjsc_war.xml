@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xsjsc:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>xsjsc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="xsjsc.war">
+      <element id="artifact" artifact-name="xsjsc:war exploded" />
+    </root>
+  </artifact>
+</component>

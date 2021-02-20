@@ -1,0 +1,44 @@
+<!--pages/template_cart/template_cart.wxml-->
+<template name="no-goods">
+  <view class="title-box">
+    购物车空空如也~
+  </view>
+  <view class="to-index-btn" bindtap="toIndexPage">
+    去逛逛
+  </view>
+</template>
+
+<template name="cart-goods-list">
+  <view class="list-top">
+    <view class="label">微商城</view>
+    <view class="edit-btn" hidden="{{!saveHidden}}" bindtap="editTap">清空</view>
+    <view class="edit-btn" hidden="{{saveHidden}}" bindtap="saveTap">完成</view>
+  </view>
+  <view class="goodsList">
+    <view class="a-goods-conts" wx:for="{{list}}" wx:key="item">
+      <view class="goods-info">
+        <view class="img-box" wx:if="{{item.imgs}}">
+          <image src="/images/index/{{item.imgs}}" class="img"></image>
+        </view>
+        <view class="text-box">
+          <view class="goods-title">{{item.name}}</view>
+          <view class="goods-label">月售：{{item.num}}件/库存：{{item.stock}}件</view>
+          <view class="goods-price">¥{{item.price}}</view>
+          <view class="buy-num">
+            <view class="jian-btn" data-index="{{index}}" data-Id="{{item.id}}" bindtap="jianBtnTap">-</view>
+            <input type="number" value="{{item.shopNum}}" disabled></input>
+            <view class="jia-btn" data-index="{{index}}" bindtap="jiaBtnTap">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="jiesuan-box">
+    <view class="left-price">
+      <view class="all-selected {{allSelect ?'active':''}}" bindtap="bindAllSelect">全选</view>
+      <view class="total" hidden="{{noSelect}}">合计：¥{{price}}</view>
+    </view>
+    <view class="to-pay-btn {{noSelect?'no-select':''}}" hidden="{{!saveHidden}}" bindtap="toPayOrder">结算</view>
+    <view class="to-pay-btn {{noSelect?'no-select':''}}" hidden="{{saveHidden}}" bindtap="deleteSelected">清空购物车</view>
+  </view>
+</template>

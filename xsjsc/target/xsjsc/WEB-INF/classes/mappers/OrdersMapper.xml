@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.etime.xsjsc.dao.OrdersMapper" >
+  <resultMap id="BaseResultMap" type="edu.etime.xsjsc.pojo.Orders" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="productid" property="productid" jdbcType="VARCHAR" />
+    <result column="productname" property="productname" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="totle" property="totle" jdbcType="DOUBLE" />
+    <result column="ispay" property="ispay" jdbcType="INTEGER" />
+    <result column="invoice" property="invoice" jdbcType="VARCHAR" />
+    <result column="receive" property="receive" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="addrid" property="addrid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, openid, productid, productname, price, number, totle, ispay, invoice,
+    receive, state, address, addrid, imgs, date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 订单列表查询 -->
+  <select id="selectOrdersList" resultMap="BaseResultMap" parameterType="edu.etime.xsjsc.pojo.Orders" >
+    select
+    id, openid, productid, productname, price, number, totle, ispay, invoice,
+    receive, state, address, addrid, imgs, date
+    from orders
+    <where>
+      <if test="id!=null and id!='-1'">
+        and id=#{id}
+      </if>
+      <if test="ispay!=null and ispay!='-1'">
+        and ispay=#{ispay}
+      </if>
+      <if test="receive!=null and receive!='-1'">
+        and receive=#{receive}
+      </if>
+      <if test="state!=null and state!='-1'">
+        and state=#{state}
+      </if>
+      <if test="openid!=null and openid!='-1'">
+        and openid=#{openid}
+      </if>
+      <if test="productid!=null and productid!='-1'">
+        and productid=#{productid}
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from orders
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.etime.xsjsc.pojo.Orders" >
+    insert into orders (id, openid, productid, 
+      productname, price,
+      number, totle, ispay, 
+      invoice, receive, state, 
+      address, addrid, imgs, date)
+    values (#{id,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, 
+      #{productname,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE},
+      #{number,jdbcType=INTEGER}, #{totle,jdbcType=DOUBLE}, #{ispay,jdbcType=INTEGER}, 
+      #{invoice,jdbcType=VARCHAR}, #{receive,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{addrid,jdbcType=VARCHAR}, #{imgs,jdbcType=VARCHAR},#{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.etime.xsjsc.pojo.Orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="productid != null" >
+        productid,
+      </if>
+      <if test="productname != null" >
+        productname,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="totle != null" >
+        totle,
+      </if>
+      <if test="ispay != null" >
+        ispay,
+      </if>
+      <if test="invoice != null" >
+        invoice,
+      </if>
+      <if test="receive != null" >
+        receive,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="addrid != null" >
+        addrid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="totle != null" >
+        #{totle,jdbcType=DOUBLE},
+      </if>
+      <if test="ispay != null" >
+        #{ispay,jdbcType=INTEGER},
+      </if>
+      <if test="invoice != null" >
+        #{invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="receive != null" >
+        #{receive,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addrid != null" >
+        #{addrid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.etime.xsjsc.pojo.Orders" >
+    update orders
+    <set >
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        productid = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        productname = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="totle != null" >
+        totle = #{totle,jdbcType=DOUBLE},
+      </if>
+      <if test="ispay != null" >
+        ispay = #{ispay,jdbcType=INTEGER},
+      </if>
+      <if test="invoice != null" >
+        invoice = #{invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="receive != null" >
+        receive = #{receive,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addrid != null" >
+        addrid = #{addrid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.etime.xsjsc.pojo.Orders" >
+    update orders
+    set openid = #{openid,jdbcType=VARCHAR},
+      productid = #{productid,jdbcType=VARCHAR},
+      productname = #{productname,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      number = #{number,jdbcType=INTEGER},
+      totle = #{totle,jdbcType=DOUBLE},
+      ispay = #{ispay,jdbcType=INTEGER},
+      invoice = #{invoice,jdbcType=VARCHAR},
+      receive = #{receive,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      addrid = #{addrid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

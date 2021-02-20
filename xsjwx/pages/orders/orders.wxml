@@ -1,0 +1,110 @@
+<!--pages/orders/orders.wxml-->
+<view class="container">
+  <!--头部导航-->
+  <view class="goods-tab-box">
+    <view class="goods-tab-nav {{curIndex === 0?'on':''}}" bindtap="bindTap" data-index="0">待付款</view>
+    <view class="goods-tab-nav {{curIndex === 1?'on':''}}" bindtap="bindTap" data-index="1">待发货</view>
+    <view class="goods-tab-nav {{curIndex === 2?'on':''}}" bindtap="bindTap" data-index="2">待收货</view>
+    <view class="goods-tab-nav {{curIndex === 3?'on':''}}" bindtap="bindTap" data-index="3">全部订单</view>
+    <view class="goods-content">
+      <view wx:if="{{curIndex === 0}}">
+        <view class="content-box" wx:for="{{ordersListpay}}" wx:key="item">
+          <view class="title">收货地址：{{item.address}}</view>
+          <view class="content-item">
+            <view class="item-img" wx:if="{{item.imgs}}">
+              <image src="/images/index/{{item.imgs}}"></image>
+            </view>
+            <view class="item-content">
+              <view class="item-name">{{item.productname}}</view>
+              <view class="item-stock">库存:{{item.totle}}<text>{{item.number}}件</text></view>
+              <view class="item-price">¥:{{item.price}}</view>
+            </view>
+          </view>
+          <view class="content-bottom">共{{item.number}}件商品，产品金额:¥{{item.price*item.number}}</view>
+          <view class="content-button">
+            <text bindtap="cancelOrders" data-id="{{item.id}}">取消订单</text>
+            <text bindtap="updateIspay" data-id="{{item.id}}">去付款</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{curIndex === 1}}">
+         <view class="content-box" wx:for="{{ordersListrece}}" wx:key="item">
+          <view class="title">收货地址：{{item.address}}</view>
+          <view class="content-item">
+            <view class="item-img" wx:if="{{item.imgs}}">
+              <image src="/images/index/{{item.imgs}}"></image>
+            </view>
+            <view class="item-content">
+              <view class="item-name">{{item.productname}}</view>
+              <view class="item-stock">库存:{{item.totle}}<text>{{item.number}}件</text></view>
+              <view class="item-price">¥:{{item.price}}</view>
+            </view>
+          </view>
+          <view class="content-bottom">共{{item.number}}件商品，产品金额:¥{{item.price*item.number}}</view>
+        </view>
+      </view>
+      <!--待收货-->
+      <view wx:if="{{curIndex === 2}}">
+         <view class="content-box" wx:for="{{ordersListover}}" wx:key="item">
+          <view class="title">单号：{{item.invoice}} | 时间：{{item.date}}</view>
+          <view class="content-item">
+            <view class="item-img" wx:if="{{item.imgs}}">
+              <image src="/images/index/{{item.imgs}}"></image>
+            </view>
+            <view class="item-content">
+              <view class="item-name">{{item.productname}}</view>
+              <view class="item-stock">库存:{{item.totle}}<text>{{item.number}}件</text></view>
+              <view class="item-price">¥:{{item.price}}</view>
+            </view>
+          </view>
+          <view class="content-bottom">共{{item.number}}件商品，产品金额:¥{{item.price*item.number}}</view>
+          <view class="content-button">
+            <view bindtap="overOrders" data-id="{{item.id}}">确认收货</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{curIndex === 3}}">
+         <view class="content-box" wx:for="{{ordersListpay}}" wx:key="item">
+          <view class="title">收货地址：{{item.address}}</view>
+          <view class="content-item">
+            <view class="item-img" wx:if="{{item.imgs}}">
+              <image src="/images/index/{{item.imgs}}"></image>
+            </view>
+            <view class="item-content">
+              <view class="item-name">{{item.productname}}</view>
+              <view class="item-stock">库存:{{item.totle}}<text>{{item.number}}件</text></view>
+              <view class="item-price">¥:{{item.price}}</view>
+            </view>
+          </view>
+          <view class="content-bottom">共{{item.number}}件商品，产品金额:¥{{item.price*item.number}}</view>
+          <view class="content-button">
+            <text bindtap="cancelOrders" data-id="{{item.id}}">取消订单</text>
+            <text bindtap="updateIspay" data-id="{{item.id}}">去付款</text>
+          </view>
+        </view>
+        <view class="content-box" wx:for="{{ordersListover}}" wx:key="item">
+          <view class="title">单号：{{item.invoice}} | 时间：{{item.date}}</view>
+          <view class="content-item">
+            <view class="item-img" wx:if="{{item.imgs}}">
+              <image src="/images/index/{{item.imgs}}"></image>
+            </view>
+            <view class="item-content">
+              <view class="item-name">{{item.productname}}</view>
+              <view class="item-stock">库存:{{item.totle}}<text>{{item.number}}件</text></view>
+              <view class="item-price">¥:{{item.price}}</view>
+            </view>
+          </view>
+          <view class="content-bottom">共{{item.number}}件商品，产品金额:¥{{item.price*item.number}}</view>
+          <view class="content-button">
+            <view bindtap="overOrders" data-id="{{item.id}}">确认收货</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--底部按钮-->
+  <view class="footer">
+    <view class="left" bindtap="toindex">回首页</view>
+    <view class="right" bindtap="tomine">个人中心</view>
+  </view>
+</view>

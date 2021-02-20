@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.etime.xsjsc.dao.ProductImgsMapper" >
+  <resultMap id="BaseResultMap" type="edu.etime.xsjsc.pojo.ProductImgs" >
+    <id column="imgid" property="imgid" jdbcType="VARCHAR" />
+    <result column="productid" property="productid" jdbcType="VARCHAR" />
+    <result column="imgurl" property="imgurl" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    imgid, productid, imgurl, sort
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from productimgs
+    where imgid = #{imgid,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据商品id查询商品的图片列表 -->
+  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    imgid, productid, imgurl, sort
+    from productimgs
+    where productid = #{productid,jdbcType=VARCHAR}
+    order by sort asc
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from productimgs
+    where imgid = #{imgid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.etime.xsjsc.pojo.ProductImgs" >
+    insert into productimgs (imgid, productid, imgurl, 
+      sort)
+    values (#{imgid,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, #{imgurl,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.etime.xsjsc.pojo.ProductImgs" >
+    insert into productimgs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="imgid != null" >
+        imgid,
+      </if>
+      <if test="productid != null" >
+        productid,
+      </if>
+      <if test="imgurl != null" >
+        imgurl,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="imgid != null" >
+        #{imgid,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl != null" >
+        #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.etime.xsjsc.pojo.ProductImgs" >
+    update productimgs
+    <set >
+      <if test="productid != null" >
+        productid = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl != null" >
+        imgurl = #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    where imgid = #{imgid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.etime.xsjsc.pojo.ProductImgs" >
+    update productimgs
+    set productid = #{productid,jdbcType=VARCHAR},
+      imgurl = #{imgurl,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER}
+    where imgid = #{imgid,jdbcType=VARCHAR}
+  </update>
+</mapper>

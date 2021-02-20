@@ -1,0 +1,160 @@
+/* pages/orders/orders.wxss */
+view{
+  padding: 0;
+  margin: 0;
+}
+.container{
+  background-color: #eceaea;
+  min-height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+/*头部导航*/
+.goods-tab-box{
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.goods-tab-nav{
+  display: inline-block;
+  width: 25%;
+  height: 90rpx;
+  line-height: 90rpx;
+  box-sizing: border-box;
+  text-align: center;
+  color: #777;
+  font-size: 36rpx;
+  border-bottom: 2rpx solid rgb(187, 187, 187);
+}
+.goods-tab-nav.on{
+  color: #00aa90;
+  border-bottom: 5rpx solid #00aa90;
+}
+.goods-content{
+  padding: 10rpx;
+  font-size: 30rpx;
+  color: #777;
+  padding-bottom: 80rpx;
+}
+/*待付款*/
+.content-box{
+  width: 100%;
+  margin: 40rpx auto;
+  height: auto;
+  background-color: #f3f2f3;
+  border-right: 20rpx;
+  overflow: hidden;
+}
+.content-box:first-child{
+  margin-top: 10rpx;
+}
+.title{
+  width: 100%;
+  height: 70rpx;
+  background-position-x: #f3f2f3;
+  color: rgb(187, 187, 187);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.content-item{
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2rpx solid rgb(187, 187, 187);
+}
+.item-img{
+  width: 120rpx;
+  height: 120rpx;
+  padding: 20rpx;
+}
+.item-img image{
+  width: 100%;
+  height: 100%;
+}
+
+.item-content{
+  width: 460rpx;
+  padding: 15rpx 0;
+}
+.item-name{
+  width: 100%;
+  font-style: 34rpx;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 5rpx 0;
+}
+.item-stock{
+  width: 100%;
+  position: relative;
+}
+.item-stock text{
+  position: absolute;
+  right: -80rpx;
+  top: -5rpx;
+  font-size: 36rpx;
+  color: #000;
+}
+.item-price{
+  color: #ff0000;
+}
+/*主体内容底部按钮*/
+.content-bottom{
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+}
+.content-button{
+  width: 70%;
+  height: 80rpx;
+  margin: 20rpx auto;
+}
+.content-button text{
+  padding: 15rpx 30rpx;
+  border: 1rpx solid rgb(187, 187, 187);
+  display: inline-block;
+  border-radius: 5rpx;
+  background-position-x: #eceaea;
+  color: #000;
+}
+.content-button text:last-child{
+  float: right;
+}
+/*待收货按钮样式*/
+.content-button view{
+  padding: 15rpx 30rpx;
+  border: 1rpx solid rgb(187, 187, 187);
+  display: inline-block;
+  border-radius: 5rpx;
+  background-color: #eceaea;
+  color: #000;
+  margin-left: 33%;
+}
+
+/*脚部样式*/
+.footer{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.footer view{
+  width: 50%;
+  text-align: center;
+}
+.left{
+  background-color: #ffa500;
+}
+.right{
+  background-color: #fe4400;
+}

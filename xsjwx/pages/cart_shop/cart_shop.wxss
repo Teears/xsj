@@ -1,0 +1,10 @@
+/* pages/cart_shop/cart_shop.wxss */
+@import "../template_cart//template_cart.wxss";
+page{
+  min-height:100%;
+  background: #f2f2f2;
+}
+.container{
+  background: #f2f2f2;
+  min-height: 100%;
+}

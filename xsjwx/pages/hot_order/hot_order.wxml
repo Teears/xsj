@@ -1,0 +1,25 @@
+<!--pages/hot_order/hot_order.wxml-->
+<view class="container">
+  <block>
+    <image class="logo" src="/images/xiaoshou.png"></image>
+  </block>
+  <view class="content">
+    <view class="hotbox" wx:for="{{hotorder}}" xw:key="item" xw:index="index" bindtap="toHotorder" data-id="{{item.id}}">
+      <view class="hotboxleft">
+        <view class="hotboxleft_text" wx:if="{{index!==0&&index!==1&&index!==2}}">{{index+1}}</view>
+        <image class="icon" src="/images/no1.png" wx:if="{{index==0}}"></image>
+        <image class="icon" src="/images/no2.png" wx:if="{{index==1}}"></image>
+        <image class="icon" src="/images/no3.png" wx:if="{{index==2}}"></image>
+      </view>
+      <view class="hotboxmid" wx:if="{{item.imgs}}" >
+        <image src="/images/index/{{item.imgs}}"></image>
+      </view>
+      <view class="hotboxright">
+        <view class="item-name">{{item.name}}</view>
+        <view class="item-number">销量:{{item.number}}件</view>
+        <view class="item-price">¥{{item.price}}</view>
+      </view>
+
+    </view>
+  </view>
+</view>

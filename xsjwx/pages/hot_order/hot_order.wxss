@@ -1,0 +1,130 @@
+/* pages/hot_order/hot_order.wxss */
+page{
+  font-size: 10pt;
+  line-height: 150%;
+  min-height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.container{
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
+  background-color:#F08080;
+  overflow: hidden;
+  /* justify-content: space-between; */
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.logo{
+  position: absolute;
+  width: 800rpx;
+  height: 450rpx;
+  top: -50rpx;
+  left: 50%;
+  margin-left: -400rpx;
+  opacity: 0;
+  animation: show 2.5s cubic-bezier(0.19,1,0.22,1)0.5s forwards;
+}
+@keyframes show{
+  0%{opacity: 0;}
+  100%{opacity: .95;}
+}
+.content{
+  flex: 1;
+  display: flex;
+  position: relative;
+  z-index: 10;
+  /* 前后顺序 */
+  flex-direction: column;
+  /* 竖向自由排列 */
+  align-items: stretch;
+  /* 元素被拉伸以适应容器。 */
+  justify-content: space-around;
+  /* 项目位于容器的中心。 */
+  width: 99%;
+  height: 100%;
+  padding-bottom: 450rpx;
+  border-radius: 20rpx;
+  opacity: 0;
+  background-color: #b93838;
+  /* background: -webkit-gradient(linear,left top,left bottom,from(rgba(244,244,244,0)),color-stop(0.1,#f4f4f4),to(#f4f4f4)); */
+  transform: translate3d(0,100%,0);
+  animation: rise 3s cubic-bezier(0.19,1,0.22,1) .25s forwards;
+  /* top: -130rpx; */
+  left: 4rpx;
+  margin-top: 20rpx;
+  box-sizing:border-box;
+}
+@keyframes rise{
+  0%{opacity: 0;transform: translate3d(0,100%,0);}
+  50%{opacity: 1;}
+  100%{opacity: 1;transform: translate3d(0,300rpx,0);}
+}
+.hotbox{
+  width: 98%;
+  height: 200rpx;
+  display: flex;
+  position: relative;
+  top: 5rpx;
+  background-color: #f4f4f4;
+  justify-content: center;
+  border-radius: 20rpx;
+  box-sizing:border-box;
+  /* justify-content: space-around; */
+  margin: 5rpx 5rpx 2rpx 5rpx;
+}
+.hotboxleft{
+  width: 80rpx;
+  height: 100%;
+}
+.hotboxleft .icon{
+  width: 70rpx;
+  height: 70rpx;
+  padding-top: 65rpx;
+  float: left;
+}
+.hotboxleft .hotboxleft_text{
+  color: #FFA500;
+  font-size: 20px;
+  padding-top: 75rpx;
+  padding-left: 10rpx;
+  text-align: center;
+  float: left;
+}
+.hotboxmid{
+  width: 30%;
+  height: 100%;
+  justify-content: center;
+}
+.hotboxmid image{
+  width: 80%;
+  height: 100%;
+  border-radius: 15rpx;
+}
+.hotboxright{
+  width: 55%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+.item-name{
+  width: 100%;
+  height: 30%;
+  font-size: 40rpx;
+  margin-top: 30rpx;
+}
+.item-price{
+  color: #ff0000;
+}
+.item-number{
+  width: 100%;
+  height: 30%;
+  color: #A9A9A9;
+}

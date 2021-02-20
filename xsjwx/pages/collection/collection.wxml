@@ -1,0 +1,24 @@
+<!--pages/collection/collection.wxml-->
+<view class="container">
+  <view class="header">
+    <text>我的收藏</text>
+    <text bindtap="toMine">个人中心</text>
+  </view>
+  <view class="box">
+    <view class="item" wx:for="{{collectionList}}" wx:key="item">
+      <view class="item-img" wx:if="{{item.imgs}}">
+        <image src="/images/index/{{item.imgs}}"></image>
+      </view>
+      <view class="item-content">
+        <view class="date">收藏时间:{{item.collecttime}}</view>
+        <view class="name">{{item.name}}</view>
+        <view class="num">
+          <text class="stock">库存:{{item.stock}}</text>
+          <text class="number">{{item.num}}人付款</text>
+          <text class="price">¥{{item.price}}</text>
+        </view>
+      </view>
+      <view class="right" bindtap="deleteCollection" data-id="{{item.id}}">删除</view>
+    </view>
+  </view>
+</view>

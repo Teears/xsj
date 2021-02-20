@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.etime.xsjsc.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="edu.etime.xsjsc.pojo.Product" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="stock" property="stock" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="publishtime" property="publishtime" jdbcType="TIMESTAMP" />
+    <result column="recommend" property="recommend" jdbcType="INTEGER" />
+    <result column="oldest" property="oldest" jdbcType="INTEGER" />
+    <result column="hot" property="hot" jdbcType="INTEGER" />
+    <result column="fields1" property="fields1" jdbcType="VARCHAR" />
+    <result column="fields2" property="fields2" jdbcType="VARCHAR" />
+    <result column="fields3" property="fields3" jdbcType="VARCHAR" />
+    <result column="typeid" property="typeid" jdbcType="VARCHAR" />
+    <result column="typename" property="typename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, price, title, stock, number, description, publishtime, recommend, oldest, 
+    hot, fields1, fields2, fields3, typeid, typename, imgs
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+<!--  查询最新商品排行-->
+  <select id="selectMostProduct" resultMap="BaseResultMap" parameterType="edu.etime.xsjsc.pojo.Product" >
+    select
+    id, name, price, title, stock, number, description, publishtime, recommend, oldest,
+    hot, fields1, fields2, fields3, typeid, typename, imgs
+    from product
+    order by number desc limit 50
+  </select>
+  <!-- 商品列表查询 -->
+  <select id="selectProductList" resultMap="BaseResultMap" parameterType="edu.etime.xsjsc.pojo.Product" >
+    select 
+    id, name, price, title, stock, number, description, publishtime, recommend, oldest, 
+    hot, fields1, fields2, fields3, typeid, typename, imgs
+    from product
+   	<where>
+   		<if test="typeid!=null and typeid!='-1'">
+   			and typeid=#{typeid}
+   		</if>
+   		<if test="hot!=null and hot!='-1'">
+   			and hot=#{hot}
+   		</if>
+   		<if test="recommend!=null and recommend!='-1'">
+   			and recommend=#{recommend}
+   		</if>
+   		<if test="oldest!=null and oldest!='-1'">
+   			and oldest=#{oldest}
+   		</if>
+   		<if test="fields1!=null and fields1!='-1'">
+   			and fields1=#{fields1}
+   		</if>
+   		<if test="name!=null and name!=''">
+   			and name like #{name}
+   		</if>
+   	</where>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from product
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.etime.xsjsc.pojo.Product" >
+    insert into product (id, name, price, 
+      title, stock, number, 
+      description, publishtime, recommend, 
+      oldest, hot, fields1, 
+      fields2, fields3, typeid, 
+      typename)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{title,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{publishtime,jdbcType=TIMESTAMP}, #{recommend,jdbcType=INTEGER}, 
+      #{oldest,jdbcType=INTEGER}, #{hot,jdbcType=INTEGER}, #{fields1,jdbcType=VARCHAR}, 
+      #{fields2,jdbcType=VARCHAR}, #{fields3,jdbcType=VARCHAR}, #{typeid,jdbcType=VARCHAR}, 
+      #{typename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.etime.xsjsc.pojo.Product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="stock != null" >
+        stock,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="publishtime != null" >
+        publishtime,
+      </if>
+      <if test="recommend != null" >
+        recommend,
+      </if>
+      <if test="oldest != null" >
+        oldest,
+      </if>
+      <if test="hot != null" >
+        hot,
+      </if>
+      <if test="fields1 != null" >
+        fields1,
+      </if>
+      <if test="fields2 != null" >
+        fields2,
+      </if>
+      <if test="fields3 != null" >
+        fields3,
+      </if>
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="typename != null" >
+        typename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        #{publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=INTEGER},
+      </if>
+      <if test="oldest != null" >
+        #{oldest,jdbcType=INTEGER},
+      </if>
+      <if test="hot != null" >
+        #{hot,jdbcType=INTEGER},
+      </if>
+      <if test="fields1 != null" >
+        #{fields1,jdbcType=VARCHAR},
+      </if>
+      <if test="fields2 != null" >
+        #{fields2,jdbcType=VARCHAR},
+      </if>
+      <if test="fields3 != null" >
+        #{fields3,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null" >
+        #{typename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.etime.xsjsc.pojo.Product" >
+    update product
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null" >
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        publishtime = #{publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=INTEGER},
+      </if>
+      <if test="oldest != null" >
+        oldest = #{oldest,jdbcType=INTEGER},
+      </if>
+      <if test="hot != null" >
+        hot = #{hot,jdbcType=INTEGER},
+      </if>
+      <if test="fields1 != null" >
+        fields1 = #{fields1,jdbcType=VARCHAR},
+      </if>
+      <if test="fields2 != null" >
+        fields2 = #{fields2,jdbcType=VARCHAR},
+      </if>
+      <if test="fields3 != null" >
+        fields3 = #{fields3,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null" >
+        typeid = #{typeid,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null" >
+        typename = #{typename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.etime.xsjsc.pojo.Product" >
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      title = #{title,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      publishtime = #{publishtime,jdbcType=TIMESTAMP},
+      recommend = #{recommend,jdbcType=INTEGER},
+      oldest = #{oldest,jdbcType=INTEGER},
+      hot = #{hot,jdbcType=INTEGER},
+      fields1 = #{fields1,jdbcType=VARCHAR},
+      fields2 = #{fields2,jdbcType=VARCHAR},
+      fields3 = #{fields3,jdbcType=VARCHAR},
+      typeid = #{typeid,jdbcType=VARCHAR},
+      typename = #{typename,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

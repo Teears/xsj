@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.etime.xsjsc.dao.BuycarMapper" >
+  <resultMap id="BaseResultMap" type="edu.etime.xsjsc.pojo.Buycar" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="productid" property="productid" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, productid, openid, name, imgs, stock, price, num, shopNum
+  </sql>
+  <select id="selectBuycarList" resultMap="BaseResultMap" parameterType="edu.etime.xsjsc.pojo.Buycar" >
+    select
+    id, productid, openid, name, imgs, stock, price, num, shopNum
+    from buycar
+    <where>
+      <if test="openid!=null and openid!=''">
+        and openid=#{openid}
+      </if>
+    </where>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from buycar
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from buycar
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+   <delete id="deleteByOpenid" parameterType="java.lang.String" >
+    delete from buycar
+    where openid = #{openid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.etime.xsjsc.pojo.Buycar" >
+    insert into buycar (id, productid, openid, name, imgs, stock, price, num, shopNum
+      )
+    values (#{id,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{imgs,jdbcType=VARCHAR},
+        #{stock,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{num,jdbcType=INTEGER}, #{shopNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.etime.xsjsc.pojo.Buycar" >
+    insert into buycar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productid != null" >
+        productid,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.etime.xsjsc.pojo.Buycar" >
+    update buycar
+    <set >
+      <if test="productid != null" >
+        productid = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.etime.xsjsc.pojo.Buycar" >
+    update buycar
+    set productid = #{productid,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

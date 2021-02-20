@@ -1,0 +1,41 @@
+<!--pages/newAddress/newAddress.wxml-->
+<view class="container">
+  <view class="input-box">
+    <text>保存的点</text>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" placeholder="请输入保存的点" value="{{userValue}}" bindinput="userValue"></input>
+      </view>
+    </view>
+  </view>
+  <view class="input-box">
+    <text>联系电话</text>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" placeholder="请输入手机号码" value="{{phoneValue}}" bindinput="phoneValue"></input>
+      </view>
+    </view>
+  </view>
+  <!--选择地址-->
+  <view class="input-box">
+    <picker class="placeholder" mode="multiSelector" bindchange="func_changeCitysChange" bindcolumnchange="func_changeCitysChangeColumn" value="{{citysIndex}}" range="{{cityArray}}">
+      <view class="picker">所在区域</view>
+      <input class="input" placeholder="请选择地区" value="{{addressValue}}"></input>
+    </picker>
+  </view>
+  <!--多行输入-->
+  <view class="section">
+    <textarea placeholder="请输入详细地址" value="{{textareaValue}}" bindinput="textareaValue"></textarea>
+  </view>
+  <!--开关-->
+  <view class="input-box position">
+    <view class="section__title">设置为默认地址</view>
+    <view class="body-view">
+      <switch checked="{{switchValue}}" bindchange="switchChange"></switch>
+    </view>
+  </view>
+  <!--按钮-->
+  <view class="btn-area">
+    <button type="primary" bindtap="saveAddress">保存地址</button>
+  </view>
+</view>

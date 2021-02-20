@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.etime.xsjsc.dao.CollectionMapper" >
+  <resultMap id="BaseResultMap" type="edu.etime.xsjsc.pojo.Collection" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="productid" property="productid" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="collecttime" property="collecttime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, productid, openid, collecttime, name, price,  stock, num, imgs
+  </sql>
+  <select id="selectCollectionList" resultMap="BaseResultMap" parameterType="edu.etime.xsjsc.pojo.Collection" >
+    select
+    id, productid, openid, collecttime, name, price,  stock, num, imgs
+    from collection
+    <where>
+      <if test="openid!=null and openid!=''">
+        and openid=#{openid}
+      </if>
+    </where>
+   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from collection
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from collection
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.etime.xsjsc.pojo.Collection" >
+    insert into collection (id, productid, openid, collecttime, name, price,  stock, num, imgs)
+    values (#{id,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR},
+      #{collecttime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER},
+      #{stock,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{imgs,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.etime.xsjsc.pojo.Collection" >
+    insert into collection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productid != null" >
+        productid,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="collecttime != null" >
+        collecttime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="collecttime != null" >
+        #{collecttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.etime.xsjsc.pojo.Collection" >
+    update collection
+    <set >
+      <if test="productid != null" >
+        productid = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="collecttime != null" >
+        collecttime = #{collecttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.etime.xsjsc.pojo.Collection" >
+    update collection
+    set productid = #{productid,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      collecttime = #{collecttime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,88 @@
+<!--pages/details/details.wxml-->
+<view class="container">
+<!--轮播图-->
+  <view class="swiper-container">
+  <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="item">
+      <swiper-item>
+        <image src="/images/index/{{item.imgurl}}" class="slider-image"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  </view>
+  <!--文字-->
+  <view class="text-box">
+    <view class="name">{{name}}</view>
+    <view class="price">
+      <text>¥{{price}}</text>
+      <text>本月累计购买{{number}}次</text>
+      <text>库存剩余：{{stock}}</text>
+    </view>
+    <view class="title">{{title}}</view>
+  </view>
+  <!--会员价格-->
+  <view class="discount">
+    <text>普通会员</text>
+    <text>价格：¥{{discountPrice}}</text>
+  </view>
+  <!--tab切换-->
+  <view class="goods-tab-box">
+    <view class="goods-tab-nav {{curIndex ===0 ?'on':''}}" bindtap="bindTap" data-index="0">商品详情</view>
+    <view class="goods-tab-nav {{curIndex ===1 ?'on':''}}" bindtap="bindTap" data-index="1">产品参数</view>
+    <view class="goods-tab-nav {{curIndex ===2 ?'on':''}}" bindtap="bindTap" data-index="2">售后保障</view>
+    <view class="goods-content">
+      <view wx:if="{{curIndex === 0}}">
+        这是商品详情，然后凑字数看一下是不是能正确显示。
+        这是商品详情，凑字数看一下是不是能正确显示。
+        商品详情，然后凑字数看一下是不是能正确显示。
+        凑字数看一下是不是能正确显示。
+        凑字数看一下。
+        这是商品详情，然后凑字数看一下是不是能正确显示
+        这是商品详情，然后凑字数看一下是不是能正确显示
+        这是商品详情，然后凑字数看一下是不是能正确显示
+      </view>
+      <view wx:if="{{curIndex === 1}}">
+        这是他的商品参数
+      </view>
+      <view wx:if="{{curIndex === 2}}">
+        不支持送货，已经售出概不脱货
+      </view>
+    </view>
+  </view>
+  <!--脚部布局-->
+  <view class="footer-box">
+    <view class="shop-collection {{active?'on':''}}" bindtap="goCollection">收藏</view>
+    <view class="shop-cart-btn" bindtap="goShopCar">
+      <view class="shop-num">{{carNum}}</view>购物车
+    </view>
+    <view class="join-shop-cart" bindtap="toAddShopCar">加入购物车</view>
+    <view class="now-buy" bindtap="tobuy">立即购买</view>
+  </view>
+  <!--脚步隐藏框-->
+  <view class="shop-popup" hidden="{{hideShopPopup}}">
+    <view class="popup-contents">
+      <view class="pop-goods-info">
+        <view class="pop-img-box" wx:if="{{shopImgUrl}}">
+          <image src="/images/index/{{shopImgUrl}}" class="goods-thumbnail"></image>
+        </view>
+        <view class="pop-goods-des">
+          <view class="pop-goods-title">{{name}}</view>
+          <view class="pop-goods-price">¥{{totalPrice}}</view>
+        </view>
+        <view class="pop-goods-close" bindtap="closePopupTap"></view>
+      </view>
+      <view class="buy-num-box">
+        <view class="num-label">购买数量</view>
+        <view class="num-box">
+          <view class="num-jian" bindtap="numJianTap">-</view>
+          <view class="num-input">
+            <input type="number" value="{{buyNumber}}" disabled />
+          </view>
+          <view class="num-jian" bindtap="numJiaTap">+</view>
+        </view>
+      </view>
+      <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">加入购物车</view>
+      <view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow">立即购买</view>
+    </view>
+  </view>
+</view>

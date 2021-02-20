@@ -1,0 +1,127 @@
+<!--index.wxml-->
+<view class="container">
+<!--头部布局-->
+ <view class="header">
+  <image class="bg" src="/images/index/ad-top1.jpg"></image>
+  <image class="ad" src="/images/index/ad.png"></image>
+  <view class="search-view">
+    <view class="search-content">
+      <image src="/images/index/Search.png" class="search-icon"></image>
+      <input class="search-input" bindtap="toSearch" placeholder="请输入你想要的商品"></input>
+    </view>
+  </view>
+ </view>
+<!--轮播图-->
+<view class="swiper-container">
+  <swiper class="swiper-box" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" circular="{{true}}" duration="1000">
+    <block wx:for="{{imgUrls}}" wx:key="item">
+      <swiper-item>
+        <image src="{{item}}" class="slider-image"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!--图标分类-->
+<view class="iconlist-box">
+  <view class="iconlist-item">
+    <image src="/images/index/icon-link5.png"></image>
+    <text>品牌大全</text>
+  </view>
+   <view class="iconlist-item">
+    <image src="/images/index/icon-link6.png"></image>
+    <text>最新上架</text>
+  </view>
+   <view class="iconlist-item">
+    <image src="/images/index/icon-link7.png"></image>
+    <text>精品推荐</text>
+  </view>
+  <view class="iconlist-item" bindtap="toHotOrder">
+    <image src="/images/index/icon-link8.png"></image>
+    <text>销量排行</text>
+  </view>
+   <view class="iconlist-item">
+    <image src="/images/index/icon-link1.png"></image>
+    <text>用户中心</text>
+  </view>
+   <view class="iconlist-item">
+    <image src="/images/index/icon-link2.png"></image>
+    <text>订单管理</text>
+  </view>
+   <view class="iconlist-item">
+    <image src="/images/index/icon-link3.png"></image>
+    <text>旅游咨询</text>
+  </view>
+   <view class="iconlist-item">
+    <image src="/images/index/icon-link4.png"></image>
+    <text>关于我们</text>
+  </view>
+</view>
+<!--新闻动态-->
+<view class="index-news">
+  <view class="index-news-list" wx:for="{{news}}" wx:key="item">
+    <image src="/images/index/horn.png"></image>
+    <text>{{item.data}} {{item.text}}</text>
+    <image src="/images/index/right.png"></image>
+  </view>
+</view>
+<!--精选推荐-->
+<view class="index-module">
+  <view class="index-module-tit">
+    <text class="left-text">精选推荐</text>
+    <text class="right-text">更多</text>
+  </view>
+  <view class="index-module-con">
+    <scroll-view class="model-scroll-view" scroll-x="{{true}}">
+      <block wx:for="{{boutique}}" wx:key="item">
+        <view class="item-group" bindtap="toBoutique" data-id="{{item.id}}">
+          <view class="img-group" wx:if="{{item.imgs}}">
+            <image src="/images/index/{{item.imgs}}"></image>
+          </view>
+          <view class="item-title">{{item.name}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<!--最新产品-->
+<view class="index-module">
+  <view class="index-module-tit">
+    <text class="left-text">最新产品</text>
+    <text class="right-text">更多</text>
+  </view>
+  <view class="index-module-con">
+    <scroll-view class="model-scroll-view" scroll-x="{{true}}">
+      <block wx:for="{{newest}}" wx:key="item">
+        <view class="item-group" bindtap="toNewest" data-id="{{item.id}}">
+          <view class="img-group" wx:if="{{item.imgs}}">
+            <image src="/images/index/{{item.imgs}}"></image>
+          </view>
+          <view class="item-title">{{item.name}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<!--热销商品-->
+<view class="index-module">
+  <view class="index-hot-title">
+    <text class="sides-text">-</text>
+    <text class="center-text"> 热销商品 </text>
+    <text class="sides-text">-</text>
+  </view>
+  <view class="index-module-con">
+      <block wx:for="{{hotset}}" wx:key="item">
+        <view class="item-hot-group" bindtap="toHotset" data-id="{{item.id}}">
+          <view class="img-group" wx:if="{{item.imgs}}">
+            <image src="/images/index/{{item.imgs}}"></image>
+          </view>
+          <view class="item-hot-title">{{item.name}}
+            <text class="item-price" space="ensp">\n ¥{{item.price}}     </text>
+            <text class="item-saled">{{item.number}}人付款</text>
+          </view>
+        </view>
+      </block>
+  </view>
+</view>
+
+</view>

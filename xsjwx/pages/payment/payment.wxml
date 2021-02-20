@@ -1,0 +1,36 @@
+<!--pages/payment/payment.wxml-->
+<view class="container">
+  <!--选择地址模块-->
+  <view class="address">
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group>
+        <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="item" bindtap="radioChange" data-id="{{item.id}}">
+          <view class="weui-cell__hd">
+            <radio value="{{item.id}}" checked="{{item.isdefault == 1 ? true:false}}"/>
+          </view>
+          <view class="weui-cell__bd">禹女士-{{item.phone}}-{{item.address}}</view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <!--结算商品模块-->
+  <view class="goodsList">
+    <view class="a-goods-conts">
+      <view class="goods-info" wx:for="{{shopList}}" wx:key="item">
+        <view class="img-box" wx:if="{{item.imgs}}">
+          <image src="/images/index/{{item.imgs}}" class="img"></image>
+        </view>
+        <view class="text-box">
+          <view class="goods-title">{{item.name}}</view>
+          <view class="goods-label">月售：{{item.num}}件/库存：{{item.stock}}件</view>
+          <view class="goods-price">{{item.price}}</view>
+          <view class="buy-num">{{item.shopNum}}件</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--支付钱-->
+  <view class="goPrice">
+    总价:<text>¥{{price}}</text> <text class="button" bindtap="goPrice">支付</text>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+<!--pages/cart_shop/cart_shop.wxml-->
+<import src="../template_cart/template_cart.wxml" />
+<view class="container">
+  <!--模板使用-->
+  <template is="{{goodsList.list.length > 0 ? 'cart-goods-list':'no-goods'}}" data="{{...goodsList}}"></template>
+</view>

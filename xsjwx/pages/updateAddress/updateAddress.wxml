@@ -1,0 +1,38 @@
+<!--pages/updateAddress/updateAddress.wxml-->
+<view class="container">
+  <view class="input-box">
+    <text>保存的点</text>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" placeholder="请输入保存的点" value="{{userValue}}" bindinput="userValue"></input>
+      </view>
+    </view>
+  </view>
+  <view class="input-box">
+    <text>联系电话</text>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" placeholder="请输入手机号码" value="{{phoneValue}}" bindinput="phoneValue"></input>
+      </view>
+    </view>
+  </view>
+  <view class="input-box">
+    <text>收货地址</text>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" placeholder="请输入收货地址" value="{{addressValue}}" bindinput="addressValue"></input>
+      </view>
+    </view>
+  </view>
+  <!--开关-->
+  <view class="input-box position">
+    <view class="section__title">设置为默认地址</view>
+    <view class="body-view">
+      <switch checked="{{switchValue}}" bindchange="switchChange"></switch>
+    </view>
+  </view>
+  <!--按钮-->
+  <view class="btn-area">
+    <button type="primary" bindtap="sendBtn">修改地址</button>
+  </view>
+</view>

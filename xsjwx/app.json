@@ -1,0 +1,57 @@
+{
+  "pages":[
+    "pages/start/start",
+    "pages/index/index",
+    "pages/hot_order/hot_order",
+    "pages/cart_shop/cart_shop",
+    "pages/details/details",
+    "pages/payment/payment",
+    "pages/template_cart/template_cart",
+    "pages/address/address",
+    "pages/updateAddress/updateAddress",
+    "pages/newAddress/newAddress",
+    "pages/orders/orders",
+    "pages/collection/collection",
+    "pages/mine/mine",
+    "pages/sorts/sorts",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#FF0000",
+    "navigationBarTitleText": "新世纪",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar":{
+    "color":"6e6d6b",
+    "selectedColor":"#000",
+    "borderStyle":"black",
+    "backgroundColor":"#fff",
+    "box-shadow":"0 0 6px 0",
+    "list":[{
+      "pagePath":"pages/index/index",
+      "text":"首页",
+      "iconPath":"images/home.png",
+      "selectedIconPath":"images/homeoff.png"
+    },{
+      "pagePath":"pages/sorts/sorts",
+      "text":"分类",
+      "iconPath":"images/category.png",
+      "selectedIconPath":"images/categoryoff.png"
+    },{
+      "pagePath":"pages/cart_shop/cart_shop",
+      "text":"购物车",
+      "iconPath":"images/cart.png",
+      "selectedIconPath":"images/cartoff.png"
+    },{
+      "pagePath":"pages/mine/mine",
+      "text":"我的",
+      "iconPath":"images/mine.png",
+      "selectedIconPath":"images/mineoff.png"
+    }
+
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

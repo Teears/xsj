@@ -1,0 +1,50 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+<!--头部布局-->
+  <view class="mine-top">
+    <view class="avatar-left">
+      <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar"></image>
+    </view>
+    <view class="avatar-right">
+      <view class="name-box">
+        <text>用户姓名：{{userInfo.nickName}}</text>
+      </view>
+      <view class="member">会员等级：普通会员</view>
+      <view class="accont">手机号码：199XXXXXXXX</view>
+    </view>
+  </view>
+  <!--主题内容布局-->
+  <view class="mine-content">
+    <view class="content">
+      <view class="mine-list" bindtap="goToOrder">
+        <image class="icon" src="/images/mine/all.png"></image>
+        <text>我的订单</text>
+        <image class="jt" src="/images/mine/arrow-right.png"></image>
+      </view>
+      <view class="mine-list" bindtap="goToAddress">
+        <image class="icon" src="/images/mine/getting.png"></image>
+        <text>收货地址</text>
+        <image class="jt" src="/images/mine/arrow-right.png"></image>
+      </view>
+      <view class="mine-list" bindtap="goToCollection">
+        <image class="icon" src="/images/mine/collection.png"></image>
+        <text>我的收藏</text>
+        <image class="jt" src="/images/mine/arrow-right.png"></image>
+      </view>
+    </view>
+
+  <view class="content">
+      <view class="mine-list">
+        <image class="icon" src="/images/mine/by.png"></image>
+        <text>关于我们</text>
+        <image class="jt" src="/images/mine/arrow-right.png"></image>
+      </view>
+      <view class="mine-list">
+        <image class="icon" src="/images/mine/outLogin.png"></image>
+        <text>退出登录</text>
+        <image class="jt" src="/images/mine/arrow-right.png"></image>
+      </view>
+    </view>
+
+  </view>
+</view>
